@@ -1,0 +1,114 @@
+Let's break down the given table into the four steps of the normalization process:
+
+PersonNo
+Firstname
+Lastname
+MobileNo
+DOB
+TestNo (Primary Key)
+PersonNo (Foreign Key)
+TestDate
+TestTime
+Result
+TestType
+Description
+Locationid (Foreign Key)
+
+LocationName
+
+Step 1: 1NF (First Normal Form)
+
+In 1NF, we ensure that each cell in the table contains a single piece of data, and there are no repeating groups or arrays.
+
+This step is like making sure everything is neat and tidy. We want to ensure that each little box in our table has only one piece of information and that there are no confusing lists or groups.
+
+So, in our table, we check that each row has only one value for each column. It's like making sure everyone stands in a straight line, and no one is bundled together.
+
+Table: RawData
+
+PersonNo (Primary Key)
+Firstname
+Lastname
+MobileNo
+DOB
+TestNo (Primary Key)
+PersonNo (Foreign Key)
+TestDate
+TestTime
+Result
+TestType
+Description
+Locationid (Foreign Key)
+LocationName
+
+This table satisfies the requirements of 1NF as there are no repeating groups, and each cell contains a single piece of data.
+
+Step 2: 2NF (Second Normal Form)
+
+In 2NF, we address partial dependencies by making sure non-prime attributes (those not part of the primary key) depend on the entire primary key.
+
+Now, in this step, we focus on making sure everything is properly connected. We want to ensure that each piece of information in our table depends on one main thing.
+
+Imagine you have a list of tests, and each test is done by a person. We need to make sure that the details about the test (like the date and result) are linked directly to the person who took the test.
+
+Table: Persons
+
+PersonNo (Primary Key)
+Firstname
+Lastname
+MobileNo
+DOB
+
+Table: Tests
+
+TestNo (Primary Key)
+PersonNo (Foreign Key)
+TestDate
+TestTime
+Result
+TestType
+Description
+Locationid (Foreign Key)
+
+Now, we have separated the data into two tables, ensuring that non-prime attributes depend on the whole primary key.
+
+Step 3: 3NF (Third Normal Form)
+
+In 3NF, we remove transitive dependencies, meaning that non-prime attributes shouldn't depend on other non-prime attributes.
+
+Here, we are making sure things are not mixed up. We want to be sure that information doesn't depend on other information that isn't really related.
+
+For example, if we have details about the test location, we want to make sure that these details don't rely on facts about the person or the test itself. We want to keep everything separate and organized.
+
+Table: Persons
+
+PersonNo (Primary Key)
+Firstname
+Lastname
+MobileNo
+DOB
+
+Table: Tests
+
+TestNo (Primary Key)
+PersonNo (Foreign Key)
+TestDate
+TestTime
+Result
+TestType
+Description
+
+Table: Locations
+
+Locationid (Primary Key)
+LocationName
+
+Now, we have eliminated transitive dependencies, with each non-key attribute depending only on the primary key of its respective table.
+
+Step 4: BCNF (Boyce-Codd Normal Form)
+
+BCNF is like the final check to make sure our table is well-organized. We want to confirm that every important piece of information (like a person's ID or a test's ID) is powerful enough to determine other things.
+
+Think of it like making sure each leader (like a person's ID) can make decisions and control the information they are responsible for without any confusion.
+
+So, by following these steps, we ensure our table is tidy, well-connected, organized, and each piece of information is in the right place. This helps make databases work efficiently and without mistakes.
